@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import PropsTest from './components/PropsTest';
 import MapIt from './components/MapIt';
+import ManageState from './components/ManageState'
 
 // class App extends React.Component{
 //   render(){
@@ -17,6 +18,12 @@ import MapIt from './components/MapIt';
 // }
 
 // export default App;
+
+function Another(){
+  return(
+    <h3>Came from a function, now I'm here</h3>
+  )
+}
 
 function valid(){
   return false;
@@ -35,6 +42,7 @@ export default class App extends React.Component{
       <div className="app">
       <header className="app_header">
           <h1>Hello World</h1>
+          <Another />
           {isValid ? 
             <p>This is valid</p>
             :
@@ -45,6 +53,7 @@ export default class App extends React.Component{
           }
           
         </header>
+        <ManageState />
         <React.Fragment>
           <p>react fragment test</p>
           <p>react fragment test 2</p>
@@ -56,6 +65,7 @@ export default class App extends React.Component{
           functionPass={() => alert('passed via props')}
         />
         <MapIt />
+       
       </div>
     )
   }
