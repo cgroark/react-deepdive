@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './App.css';
 import PropsTest from './components/PropsTest';
 import MapIt from './components/MapIt';
 import ManageState from './components/ManageState'
+import Fetch from './components/Fetch'
+import { props } from 'bluebird';
 
 // class App extends React.Component{
 //   render(){
@@ -19,10 +22,13 @@ import ManageState from './components/ManageState'
 
 // export default App;
 
-function Another(){
+function Another(props){
   return(
-    <h3>Came from a function, now I'm here</h3>
+    <h3>Came from a function, now I'm here: {props.example}</h3>
   )
+}
+Another.propTypes = {
+  example: PropTypes.string.isRequired,
 }
 
 function valid(){
@@ -42,7 +48,8 @@ export default class App extends React.Component{
       <div className="app">
       <header className="app_header">
           <h1>Hello World</h1>
-          <Another />
+          <Fetch />
+          <Another example={'stringaling'}/>
           {isValid ? 
             <p>This is valid</p>
             :
