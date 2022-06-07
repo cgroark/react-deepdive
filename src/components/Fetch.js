@@ -1,24 +1,24 @@
-import React from 'react'
+import React from 'react';
 
-function RenderBooks({books}){
+function Books({books}){
     return(
-        <ul className="grid">
-            {books.map( (book) => {
-                const {author, title, book_uri, rank, book_image} = book
-                return(
-                    <li className="book" key={book_uri}>
-                        <img src={book_image} alt={`front cover of the book, ${title}`}/>
-                        <h3>#{rank}</h3>
-                        <h3>{title} by {author}</h3>
-                        
-                    </li>
-                )
+        <ul className="grid"> 
+            {books.map((each) => {
+                const {author, title, book_image, book_uri, rank} = each;
+                return <li key={book_uri}> 
+                    <div>
+                        <p>#{rank}</p>
+                        <img  src={book_image} alt={`cover a book that is called ${title}`}/>
+                        <h3>{title}</h3>
+                        <h4>{author}</h4>
+                    </div>
+                </li>
             })}
-                
         </ul>
-    ) 
-    
+    )
 }
+
+
 class Fetch extends React.Component{
     constructor(props){
         super(props)
@@ -28,33 +28,25 @@ class Fetch extends React.Component{
     }
     componentDidMount(){
         fetch('https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=BAGqFvDh9IJi1JWLxfJ9SIh2rctbgwiE')
-            .then((response) => response.json())    
+            .then((res) => res.json())
             .then((data) => {
                 this.setState({
                     books: data.results.books
                 })
             })
             .catch((error) =>{
-                console.warn(`there's an error and it's: ${error}`)
+                console.warn(`there's an error and its: ${error}`)
             })
     }
- 
     render(){
-        const {books} = this.state
+        const {books} = this.state;
         return(
-            <div>
-                <h2>bestsellers</h2>
-                <RenderBooks books={books}/>
-            </div>
+            <React.Fragment>
+                <h2>Books</h2>
+                <Books books={books}/>
+            </React.Fragment>
         )
     }
 }
 
 export default Fetch;
-
-
-
-
-
-
-
