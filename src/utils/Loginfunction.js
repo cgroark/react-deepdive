@@ -1,11 +1,14 @@
 export default function Loginfunction({username, password}){
-    console.log('hit')
-    if(username && password === 'pass1234'){
+    return new Promise ((resolve, reject) => {
         setTimeout(() => {
-            alert(`hey ${username}, you logged in`);
+            if(username && password === 'pass1234'){
+                alert(`hey ${username}, you logged in`);
+                resolve()
+            }else{
+                alert(`can't log you in ${username}`)
+                reject(new Error('invalid'))
+            }
         }, 2000)
-    }else{
-        alert(`can't log you in ${username}`)
-    }
-    
+    })
+        
 }

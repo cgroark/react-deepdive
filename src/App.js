@@ -57,7 +57,7 @@ export default class App extends React.Component{
           <Loginhooks />
           <Link />
           {/* <Fetch /> */}
-          {/* <Fetchhook /> */}
+          <Fetchhook />
           <Another example={'stringaling'}/>
           {isValid ? 
             <p>This is valid</p>
