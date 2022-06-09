@@ -5,7 +5,9 @@ import PropsTest from './components/PropsTest';
 import MapIt from './components/MapIt';
 import ManageState from './components/ManageState'
 import Fetch from './components/Fetch'
+import Fetchhook from './components/Fetchhook'
 import Link from './components/Link'
+import Loginhooks from './components/Loginhooks'
 import Login from './components/Login'
 
 import { props } from 'bluebird';
@@ -51,9 +53,11 @@ export default class App extends React.Component{
       <div className="app">
       <header className="app_header">
           <h1>Hello World</h1>
-          <Login />
+          {/* <Login /> */}
+          <Loginhooks />
           <Link />
-          <Fetch />
+          {/* <Fetch /> */}
+          {/* <Fetchhook /> */}
           <Another example={'stringaling'}/>
           {isValid ? 
             <p>This is valid</p>
