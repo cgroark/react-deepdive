@@ -1,47 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import render from 'dom-serializer';
+import React, {useState, useEffect} from 'react'
 
-function Books(props){
-    return(
-        <ul className="grid">
-            {props.books.map((each) => {
-                const {author, title, book_image, book_uri, rank} = each;
-                return(
-                    <li key={book_uri}>
-                    <div>
-                        <h1>#{rank}</h1>
-                        <img src={book_image} alt={`this is a cover that looks like the cover of: ${title}`}/>
-                        <h2>{title}</h2>
-                        <h3>{author}</h3>
-                    </div>
-
-                </li>
-                )
-            })}
-        </ul>
-    )
-}
-
-export default function Fetchhooks(){
+export default function Fetchhook(){
     const [books, setBooks] = useState([])
     const [error, setError] = useState(null)
 
-    useEffect(() => {
+    // const fetchBooks = async () =>{
+    //     try{
+    //         const data = await fetch('https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=BAGqFvDh9IJi1JWLxfJ9SIh2rctbgwiE')
+    //         const bookData = await data.json()
+    //         setBooks(bookData)
+    //     }
+    //     catch{
+    //         console.warn(error)
+    //         setError(error.message)
+    //     }
+    // }
+
+    // const fetchBooks = () => {
+    //     fetch('https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=BAGqFvDh9IJi1JWLxfJ9SIh2rctbgwiE')
+    //         .then((res) => res.json())
+    //         .then((data) =>{
+    //             setBooks(data)
+    //         })
+    //         .catch((error) => {
+    //             setError(error.message)
+    //             console.warn(error)
+    //         })
+    // }
+
+    const fetchBooks = () => {
         fetch('https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=BAGqFvDh9IJi1JWLxfJ9SIh2rctbgwiE')
             .then((res) => res.json())
             .then((data) => {
-                setBooks(data.results.books)
+                setBooks(data)
             })
             .catch((error) => {
+                console.warn(error)
                 setError(error.message)
-                console.warn(`got an error and its ${error.message}`)
             })
+    }
+
+    useEffect(()=>{
+        fetchBooks()
     }, [])
 
-   return(
-       <React.Fragment>
-           <h2>books</h2>
-           <Books books={books} />
-       </React.Fragment>
-   )
+
+    return(
+        <React.Fragment>
+            <div>Bestselling books</div>
+        </React.Fragment>
+    )
 }

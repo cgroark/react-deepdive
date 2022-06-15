@@ -10,21 +10,17 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+header, main{
+  max-width: 900px;
+}
 .grid {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
 }
 
-.grid li{
-  margin: 10px 0;
+ .grid img, .grid div .grid li{
+  margin: 0 0 10px 0;
   width: 250px;
   padding: 20px;
-}
-
-.grid li img{
-  max-width: 70%;
-  display: block;
-  margin: auto;
-}
+ }

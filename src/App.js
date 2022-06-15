@@ -8,9 +8,11 @@ import Fetch from './components/Fetch'
 import Fetchhook from './components/Fetchhook'
 import Link from './components/Link'
 import Loginhooks from './components/Loginhooks'
+import Checkcheckboxes from './components/Checkcheckboxes'
+import Check from './components/Check'
 import Login from './components/Login'
+import Todos from './components/Todos'
 
-import { props } from 'bluebird';
 
 // class App extends React.Component{
 //   render(){
@@ -53,8 +55,11 @@ export default class App extends React.Component{
       <div className="app">
       <header className="app_header">
           <h1>Hello World</h1>
+          <Check />
+          <Checkcheckboxes />
+          <Todos />
           {/* <Login /> */}
-          <Loginhooks />
+          {/* <Loginhooks /> */}
           <Link />
           {/* <Fetch /> */}
           <Fetchhook />
